@@ -20,7 +20,7 @@ no_index:
 provides:
   uni::perl:
     file: lib/uni/perl.pm
-    version: 0.9
+    version: 0.91
 requires:
   perl: v5.10.0
-version: 0.9
+version: 0.91

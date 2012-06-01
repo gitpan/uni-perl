@@ -103,7 +103,7 @@ test_warn_die {
 
 test_warn_die {
 	eval q{
-		my $x = sub : locked {};
+		my $x if 0;
 	1} or die;
 } 'deprecated';
 
@@ -153,6 +153,9 @@ test_warn_die {
 
 # semicolon ?
 
+SKIP: {
+	skip "Can't make this test on Windows", 4+1 if $^O eq 'MSWin32';
+
 test_warn_die {
 	use warnings FATAL => 'exec';
 	exec("/some/not/present/program");
@@ -161,6 +164,8 @@ test_warn_die {
 test_no_warn {
 	exec("/some/not/present/program");
 } 'exec';
+
+}
 
 # can't test newline on unix
 
